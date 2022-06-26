@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from web.views import index, fecha, Edad, plantilla
+from django.conf import settings
+from django.conf.urls.static import static
 #en importar recordar importar el nombre de las vistas.
  
 #la seccione de path es en verde la url que toca buscar y en blanco la vista que te abrira con esa url.
@@ -26,6 +28,7 @@ urlpatterns = [
     path("fecha/", fecha),
     path("futuro/<int:Edad_actual>/<int:ago>",Edad),
     path("plantilla/",plantilla),
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #Para poner una variable o dato en la url se pone <> y dentro el nombre de la variable.
 #pero todo en los "" se toma como texto por eso se pasa a entero int:
     
